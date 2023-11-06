@@ -1,0 +1,16 @@
+.user-stat {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #f6f8ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.user-stat__title {
+  margin-bottom: 10px;
+}
+.user-stat__number {
+  font-weight: 600;
+}

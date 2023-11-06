@@ -1,0 +1,8 @@
+.button {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.button__text {
+  padding-right: 10px;
+}

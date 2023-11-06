@@ -1,0 +1,22 @@
+.card-top {
+  margin-bottom: 30px;
+}
+.card-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+.title {
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: #0079ff;
+  font-weight: 600;
+}
+
+.date-created,
+.stack {
+  color: #697c9a;
+}

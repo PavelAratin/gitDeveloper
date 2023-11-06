@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Container from "./components/container/Container";
+import Header from "./components/header/Header";
+import SearchForm from "./components/searchForm/SearchForm";
+import UserCard from "./components/userCard/UserCard";
+
+import { GithubUser } from "./types";
+
+import { defaultUser } from "./mock";
+
+const BASE_URL: string = 'https://api.github.com/users/';
 
 function App() {
+  const [developer, setDeveloper] = useState<GithubUser | null>(defaultUser);
+
+  const fetchDeveloper = async (developerName: string) => {
+    const urlDeveloper: string = BASE_URL + developerName;
+    const res = await fetch(urlDeveloper);
+    const data = await res.json() as GithubUser;
+    if (data) {
+      setDeveloper(data);
+    } else {
+      setDeveloper(null)
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Header></Header>
+      <SearchForm hasError={!developer} getDeveloper={fetchDeveloper}></SearchForm>
+      {developer &&
+        <UserCard {...developer}
+        ></UserCard>}
+    </Container>
   );
 }
 
